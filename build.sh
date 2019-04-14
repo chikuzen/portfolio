@@ -9,3 +9,4 @@ cp -rf css/ docs/
 cp -rf img/ docs/
 cp -rf js/ docs/
 
+rm -f docs/css/*.scss
