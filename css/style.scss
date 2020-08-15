@@ -9,17 +9,16 @@
 
 
 html {
-    font-size: 18px;
-
-    @media (max-width: 480px) {
-        font-size: 15px;
-    }
+    font-size: 62.5%;
 }
 
 body {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: "メイリオ", sans-serif;
+    @media (min-width: 481px) {
+        font-size: 1.8rem;
+    }
 }
 
 h1, h2, h3, h4, h5 {
@@ -124,20 +123,26 @@ ul {
         font-size: 32px;
         letter-spacing: 0.1em;
         .name::after {
-            content: "/";
-            margin: 0 0.5em;
+            content: "";
+            width: 100%;
+            height: 1px;
+            background-color: #777;
+            margin: 10px 0;
+            display: block;
         }
-        @media (max-width: 450px) {
+        .ib {
+            display: block;
+        }
+        @media (min-width: 481px) {
             .ib {
-                display: block;
+                display: inline-block;
             }
             .name::after {
-                content: "";
-                width: 100%;
-                height: 1px;
-                background-color: #777;
-                margin: 10px 0;
-                display: block;
+                content: "/";
+                margin: 0 0.5em;
+                display: inline-block;
+                width: auto;
+                height: auto;
             }
         }
     }
@@ -169,25 +174,18 @@ ul {
         opacity: 1;
     }
     &_body {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
         line-height: 1.75em;
     }
     &_image {
-        width: 50%;
-        text-align: center;
-        .has-cap {
-            max-width: 300px;
-        }
+        @extend .center;
+        width: 70%;
+        max-width: 300px;
     }
     &_text {
-        width: 50%;
-        padding: 30px;
+        padding: 30px 0;
     }
-    &_list {
+    &_list_div {
         display: flex;
-        flex-wrap: wrap;
     }
     &_term {
         width: 3em;
@@ -195,33 +193,27 @@ ul {
     &_data {
         width: calc(100% - 3em);
     }
-    @media (max-width: 768px) {
-        &_image {
-            width: 100%;
-        }
+    @media (min-width: 481px) {
         &_text {
-            width: 100%;
+            padding: 30px;
         }
     }
-    @media (max-width: 480px) {
-        .img100 {
-            width: 70%;
+    @media (min-width: 768px) {
+        &_body {
+            display: flex;
+            align-items: center;
+        }
+        &_image {
+            width: 300px;
         }
         &_text {
-            padding: 30px 0;
+            width: 50%;
         }
     }
 }
 
 .skills {
-    &_list {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
     &_li {
-        width: calc(50% - 30px);
         margin-bottom: 30px;
         &_name {
             font-family: din-1451-lt-pro-engschrift;
@@ -229,8 +221,16 @@ ul {
             letter-spacing: 0.1em;
             margin-bottom: 0.4em;
         }
-        @media (max-width: 768px) {
-            width: 100%;
+    }
+    @media (min-width: 768px) {
+        &_list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        &_li {
+            width: calc(50% - 30px);
         }
     }
 }
